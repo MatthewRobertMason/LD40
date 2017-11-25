@@ -1,12 +1,12 @@
-/Modest-MudCake/[Ll]ibrary/
-/Modest-MudCake/[Tt]emp/
-/Modest-MudCake/[Oo]bj/
-/Modest-MudCake/[Bb]uild/
-/Modest-MudCake/[Bb]uilds/
-/Modest-MudCake/Assets/AssetStoreTools*
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools*
 
-/Modest-MudCake/Assets/Standard Assets*
-/Modest-MudCake/Assets/Editor/CrossPlatformInput*
+/Assets/Standard Assets*
+/Assets/Editor/CrossPlatformInput*
 
 /Build/
 /Build/*
@@ -33,4 +33,4 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
-Modest-MudCake/Temp/UnityLockfile
+/Temp/UnityLockfile
