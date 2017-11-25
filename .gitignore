@@ -5,7 +5,7 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
-/Assets/Standard Assets*
+#/Assets/Standard Assets*
 /Assets/Editor/CrossPlatformInput*
 
 /Build/
