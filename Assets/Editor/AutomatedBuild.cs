@@ -11,7 +11,7 @@ public class AutomatedBuild : MonoBehaviour
         BuildPlayerOptions options = new BuildPlayerOptions();
         options.scenes = new string[] {
             "Assets/main.unity"
-        };
+        }; 
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
