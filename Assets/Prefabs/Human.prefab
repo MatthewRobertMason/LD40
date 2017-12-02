@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 23295295137514448}
   - component: {fileID: 114187621032189674}
   - component: {fileID: 54023396290552670}
-  - component: {fileID: 138299450517332694}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -126,16 +125,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpDist: 15
   jumpForce: 100
---- !u!138 &138299450517332694
-FixedJoint:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082454873984554}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1

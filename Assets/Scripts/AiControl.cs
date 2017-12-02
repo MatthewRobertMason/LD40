@@ -9,6 +9,7 @@ public class AiControl : MonoBehaviour {
 
     private Rigidbody rb;
     private bool hasJumped = false;
+    private bool hasBeenAdded = false;
 
     // Use this for initialization
     void Start () {
@@ -31,10 +32,11 @@ public class AiControl : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.GetComponent<BusControl>() != null) {
+        if (!hasBeenAdded && (collision.gameObject.GetComponent<BusControl>() != null || collision.gameObject.GetComponent<AiControl>() != null)) {
             FixedJoint joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = collision.gameObject.GetComponent<Rigidbody>();
             GameController.AttachPassenger();
+            hasBeenAdded = true;
         }        
     }
 }
