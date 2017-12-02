@@ -34,6 +34,7 @@ public class AiControl : MonoBehaviour {
         if (collision.gameObject.GetComponent<BusControl>() != null) {
             FixedJoint joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+            GameController.AttachPassenger();
         }        
     }
 }
