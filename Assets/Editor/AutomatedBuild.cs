@@ -6,12 +6,19 @@ using UnityEditor;
 
 public class AutomatedBuild : MonoBehaviour
 {
+    public static string[] GetLevels()
+    {
+        return new string[]
+        {
+            "Assets/Levels/MainMenu.unity",
+            "Assets/Levels/main.unity"
+        };
+    }
+
     public static void BuildWebGLTest()
     {
         BuildPlayerOptions options = new BuildPlayerOptions();
-        options.scenes = new string[] {
-            "Assets/main.unity"
-        }; 
+        options.scenes = GetLevels();
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
@@ -23,9 +30,7 @@ public class AutomatedBuild : MonoBehaviour
     public static void BuildWebGL()
     {
         BuildPlayerOptions options = new BuildPlayerOptions();
-        options.scenes = new string[] {
-            "Assets/main.unity"
-        };
+        options.scenes = GetLevels();
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
