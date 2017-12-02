@@ -26,8 +26,9 @@ public class AiControl : MonoBehaviour {
 	}
 
     void Jump(Vector3 playerPos) {
-        print("jumping");
-        rb.AddForce((playerPos - transform.position) * jumpForce);
+        Vector3 targetPos = (playerPos - transform.position);
+        targetPos += new Vector3(0, 0.2f, 0);
+        rb.AddForce(targetPos * jumpForce);
         hasJumped = true;
     }
 

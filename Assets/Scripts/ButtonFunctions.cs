@@ -8,4 +8,8 @@ public class ButtonFunctions : MonoBehaviour {
 	public void GoToNextLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void Quit() {
+        Application.Quit();
+    }
 }
