@@ -9,7 +9,9 @@ public class GameController : MonoBehaviour {
     private static int numOfPassengers;
     private static BusControl player;
 
+    public float time;
     public Text peopleAttached;
+    public Text timeRemaining;
 
     public static int Score {
         get { return score; }
@@ -36,6 +38,8 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         peopleAttached.text = "Passengers: " + NumOfPassengers;
+        float timeLeft = time - Time.timeSinceLevelLoad;
+        timeRemaining.text = "Time: " + (timeLeft.ToString("n2"));
     }
 
     public static void AttachPassenger() {
