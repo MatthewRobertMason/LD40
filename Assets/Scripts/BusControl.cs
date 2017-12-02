@@ -1,83 +1,67 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
+[System.Serializable]
+public class AxleInfo
+{
+    public WheelCollider leftWheel;
+    public WheelCollider rightWheel;
+    public bool motor;
+    public bool steering;
+}
 
 public class BusControl : MonoBehaviour
 {
-    public float enginePower = 100.0f;
-    public float maxDriveSpeed = 5.0f;
-    public float breakRatio = 1.0f;
+    public List<AxleInfo> axleInfos;
+    public float maxMotorTorque;
+    public float maxSteeringAngle;
 
-    [Range(0.0f, 90.0f)]
-    public float maxSteerAngle = 45.0f;
+    public Vector3 centerOfMass = new Vector3(0.0f, -1.0f, 0.0f);
 
-
-    public WheelCollider frontLeftWheel = null;
-    public WheelCollider frontRightWheel = null;
-    public WheelCollider backLeftWheel = null;
-    public WheelCollider backRightWheel = null;
-    
-    // Use this for initialization
-    void Start ()
+    public void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        PerformMovement();
+        this.GetComponent<Rigidbody>().centerOfMass = centerOfMass;
     }
 
-    private void PerformMovement()
+    // finds the corresponding visual wheel
+    // correctly applies the transform
+    public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
-        //Input.GetAxis("Horizontal");
-        //Input.GetAxis("Vertical");
-        //Input.GetButton("Gas");
-        //Input.GetButton("Break");
-        //Input.GetButton("Boost");
-
-        float steerAngle = Input.GetAxis("Horizontal") * maxSteerAngle;
-
-        frontLeftWheel.steerAngle = steerAngle;
-        frontRightWheel.steerAngle = steerAngle;
-
-        if (Input.GetButton("Gas"))
+        if (collider.transform.childCount == 0)
         {
-            float velocity = maxDriveSpeed * Time.deltaTime * enginePower;
-
-            frontLeftWheel.brakeTorque = 0.0f;
-            frontRightWheel.brakeTorque = 0.0f;
-            backLeftWheel.brakeTorque = 0.0f;
-            backRightWheel.brakeTorque = 0.0f;
-
-            backLeftWheel.motorTorque = velocity;
-            backRightWheel.motorTorque = velocity;
-        }
-        else
-        {
-            backLeftWheel.motorTorque = 0.0f;
-            backRightWheel.motorTorque = 0.0f;
+            return;
         }
 
-        if (Input.GetButton("Break"))
-        {
-            float breakingForce = this.GetComponent<Rigidbody>().mass * breakRatio;
+        Transform visualWheel = collider.transform.GetChild(0);
 
-            frontLeftWheel.brakeTorque = breakingForce;
-            frontRightWheel.brakeTorque = breakingForce;
-            backLeftWheel.brakeTorque = breakingForce;
-            backRightWheel.brakeTorque = breakingForce;
+        Vector3 position;
+        Quaternion rotation;
+        collider.GetWorldPose(out position, out rotation);
 
-            backLeftWheel.motorTorque = 0.0f;
-            backRightWheel.motorTorque = 0.0f;
-        }
-        else
+        visualWheel.transform.position = position;
+        visualWheel.transform.rotation = rotation;
+    }
+
+    public void FixedUpdate()
+    {
+        float motor = maxMotorTorque * Input.GetAxis("Vertical");
+        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+
+        foreach (AxleInfo axleInfo in axleInfos)
         {
-            frontLeftWheel.brakeTorque = 0.0f;
-            frontRightWheel.brakeTorque = 0.0f;
-            backLeftWheel.brakeTorque = 0.0f;
-            backRightWheel.brakeTorque = 0.0f;
+            if (axleInfo.steering)
+            {
+                axleInfo.leftWheel.steerAngle = steering;
+                axleInfo.rightWheel.steerAngle = steering;
+            }
+            if (axleInfo.motor)
+            {
+                axleInfo.leftWheel.motorTorque = motor;
+                axleInfo.rightWheel.motorTorque = motor;
+            }
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
+            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
     }
 }
