@@ -12,4 +12,9 @@ public class ButtonFunctions : MonoBehaviour {
     public void Quit() {
         Application.Quit();
     }
+
+    public void Restart() {
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene);
+    }
 }

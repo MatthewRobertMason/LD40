@@ -13,6 +13,8 @@ public class AxleInfo
 
 public class BusControl : MonoBehaviour
 {
+    private bool controlEnabled;
+
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
@@ -45,23 +47,29 @@ public class BusControl : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        if(controlEnabled) {
+            float motor = maxMotorTorque * Input.GetAxis("Vertical");
+            float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
-        foreach (AxleInfo axleInfo in axleInfos)
-        {
-            if (axleInfo.steering)
-            {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
+            foreach (AxleInfo axleInfo in axleInfos) {
+                if (axleInfo.steering) {
+                    axleInfo.leftWheel.steerAngle = steering;
+                    axleInfo.rightWheel.steerAngle = steering;
+                }
+                if (axleInfo.motor) {
+                    axleInfo.leftWheel.motorTorque = motor;
+                    axleInfo.rightWheel.motorTorque = motor;
+                }
+                ApplyLocalPositionToVisuals(axleInfo.leftWheel);
+                ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
-            if (axleInfo.motor)
-            {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
-            }
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        print("game over");
+        controlEnabled = false;
+        gameObject.GetComponentInChildren<Camera>().transform.SetParent(null);
+        GameController.GameOver = true;
     }
 }
