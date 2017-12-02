@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33583729486810640}
   - component: {fileID: 23150920090998448}
   - component: {fileID: 146669807512103828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WheelBL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 33826004493563692}
   - component: {fileID: 23209545101387140}
   - component: {fileID: 146974212226392726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WheelBR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 33625502810636208}
   - component: {fileID: 23133375952297128}
   - component: {fileID: 146467533420583658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 33016793022772402}
   - component: {fileID: 23662317142481576}
   - component: {fileID: 146444846961755548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
