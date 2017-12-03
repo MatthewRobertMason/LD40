@@ -20,6 +20,7 @@ public class BusControl : MonoBehaviour
     public float maxSteeringAngle;
 
     public float maxVelocity = 200.0f;
+    public float curMaxVelocity = 200.0f;
 
     public Vector3 centerOfMass = new Vector3(0.0f, -1.0f, 0.0f);
 
@@ -75,9 +76,12 @@ public class BusControl : MonoBehaviour
         }
 
         Rigidbody rb = this.GetComponent<Rigidbody>();
-        if (rb.velocity.magnitude > maxVelocity)
+
+        curMaxVelocity = (maxVelocity - (GameController.NumOfPassengers * 3));
+
+        if (rb.velocity.magnitude > curMaxVelocity)
         {
-            rb.velocity = rb.velocity.normalized * maxVelocity;
+            rb.velocity = rb.velocity.normalized * (Mathf.Max(curMaxVelocity, (maxVelocity * 0.25f)));
         }
 
         rb.AddForce(new Vector3(0, -1f, 0) * 1000);
