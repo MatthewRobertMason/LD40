@@ -6,7 +6,7 @@ public class AiControl : MonoBehaviour {
 
     public float jumpDist = 15f;    
     public float jumpForce = 100f;
-
+    
     private Rigidbody rb;
     private bool hasJumped = false;
     private bool hasBeenAdded = false;
@@ -14,7 +14,7 @@ public class AiControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {

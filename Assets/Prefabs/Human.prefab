@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpDist: 15
   jumpForce: 200
+  jumpVariation: 0.25
