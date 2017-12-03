@@ -46,13 +46,22 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         peopleAttached.text = "Passengers: " + NumOfPassengers;
-        float timeLeft = time - Time.timeSinceLevelLoad;
+        float timeLeft = Mathf.Max(0, time - Time.timeSinceLevelLoad);
         timeRemaining.text = "Time: " + (timeLeft.ToString("n2"));
 
+        if(timeLeft <= 0) {
+            player.RemoveControlAndCamera();
+            GameOver = true;
+        } else {
+            GameOver = false;
+        }
+
         if(GameOver) {
-            print("game over 2");
             HUD.gameObject.SetActive(false);
             gameOverCanvas.gameObject.SetActive(true);
+        } else {
+            HUD.gameObject.SetActive(true);
+            gameOverCanvas.gameObject.SetActive(false);
         }
     }
 
