@@ -11,7 +11,7 @@ public class AutomatedBuild : MonoBehaviour
         return new string[]
         {
             "Assets/Levels/MainMenu.unity",
-            "Assets/Levels/main.unity"
+            "Assets/Levels/small.unity"
         };
     }
 
