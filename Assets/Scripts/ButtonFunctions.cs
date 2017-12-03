@@ -16,7 +16,12 @@ public class ButtonFunctions : MonoBehaviour {
 	}
 
     public void GoToNextLevel() {
-        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCount);
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("small");
     }
 
     public void Quit() {

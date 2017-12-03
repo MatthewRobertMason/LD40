@@ -37,8 +37,9 @@ public class AiControl : MonoBehaviour {
         if (!hasBeenAdded 
             && (collision.gameObject.GetComponent<BusControl>() != null 
             ||  collision.gameObject.GetComponent<AiControl>() != null)) {
-            //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-            //joint.connectedBody = collision.gameObject.GetComponent<Rigidbody>();
+
+            this.transform.position += Vector3.up;
+
             GameController.AttachPassenger();
             hasBeenAdded = true;
             Destroy(rb);
