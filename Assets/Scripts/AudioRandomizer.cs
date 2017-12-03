@@ -15,7 +15,6 @@ public class AudioRandomizer : MonoBehaviour
 
         int index = Random.Range(0, clips.Length);
         source.Stop();
-        //source.PlayOneShot(clips[index]);
         source.clip = clips[index];
         source.loop = true;
         source.Play();
