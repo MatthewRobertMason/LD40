@@ -26,6 +26,9 @@ public class BusControl : MonoBehaviour
     public void Start()
     {
         this.GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+        foreach(WheelCollider collide in GetComponentsInChildren<WheelCollider>()) {
+            collide.ConfigureVehicleSubsteps(5f, 15, 20);
+        }
     }
 
     // finds the corresponding visual wheel
@@ -76,6 +79,8 @@ public class BusControl : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxVelocity;
         }
+
+        rb.AddForce(new Vector3(0, -1f, 0) * 1000);
 
         Vector3 lookDirection = new Vector3(this.transform.forward.x, 0.0f, this.transform.forward.z);
         this.transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
