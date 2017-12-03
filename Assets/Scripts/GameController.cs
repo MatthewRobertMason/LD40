@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour {
     private static int score;
     private static int numOfPassengers;
     private static BusControl player;
-    private static bool gameOver = false;
+    private static bool timeOver = false;
+    private static bool endLevelHit = false;
 
     public float time;
     public Text peopleAttached;
@@ -31,9 +32,14 @@ public class GameController : MonoBehaviour {
         set { player = value; }
     }
 
-    public static bool GameOver {
-        get { return gameOver; }
-        set { gameOver = value; }
+    public static bool TimeOver {
+        get { return timeOver; }
+        set { timeOver = value; }
+    }
+
+    public static bool EndLevelHit {
+        get { return endLevelHit; }
+        set { endLevelHit = value; }
     }
 
     // Use this for initialization
@@ -51,17 +57,23 @@ public class GameController : MonoBehaviour {
 
         if(timeLeft <= 0) {
             player.RemoveControlAndCamera();
-            GameOver = true;
+            TimeOver = true;
         } else {
-            GameOver = false;
+            TimeOver = false;
         }
 
-        if(GameOver) {
+        if(TimeOver || EndLevelHit) {
             HUD.gameObject.SetActive(false);
-            gameOverCanvas.gameObject.SetActive(true);
+            if(TimeOver) {
+                gameOverCanvas.gameObject.SetActive(true);
+            } else if(EndLevelHit) {
+                // endLevelCanvas active true
+                // remove timer
+            }
         } else {
             HUD.gameObject.SetActive(true);
             gameOverCanvas.gameObject.SetActive(false);
+            // endLevelCanvas active false
         }
     }
 

@@ -96,7 +96,7 @@ public class BusControl : MonoBehaviour
             rb.AddForce(((ai.transform.position - this.transform.position).normalized + Vector3.up) * 10.0f, ForceMode.Impulse);
         }
 
-        GameController.GameOver = true;
+        GameController.EndLevelHit = true;
     }
 
     public void RemoveControlAndCamera() {

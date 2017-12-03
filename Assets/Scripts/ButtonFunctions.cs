@@ -26,6 +26,5 @@ public class ButtonFunctions : MonoBehaviour {
     public void Restart() {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene);
-        GameController.GameOver = false;
     }
 }

@@ -36,8 +36,8 @@ public class AiControl : MonoBehaviour {
         if (!hasBeenAdded && (collision.gameObject.GetComponent<BusControl>() != null || collision.gameObject.GetComponent<AiControl>() != null)) {
             //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
             //joint.connectedBody = collision.gameObject.GetComponent<Rigidbody>();
-            //GameController.AttachPassenger();
 
+            GameController.AttachPassenger();
             hasBeenAdded = true;
             Destroy(rb);
             this.transform.parent = GameController.Player.transform.Find("ClingOns");
