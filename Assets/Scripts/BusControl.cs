@@ -20,10 +20,12 @@ public class BusControl : MonoBehaviour
     public float maxSteeringAngle;
 
     public Vector3 centerOfMass = new Vector3(0.0f, -1.0f, 0.0f);
+    private Quaternion initialRotation = new Quaternion();
 
     public void Start()
     {
         this.GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+        initialRotation = this.transform.rotation;
     }
 
     // finds the corresponding visual wheel
@@ -47,16 +49,20 @@ public class BusControl : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(controlEnabled) {
+        if(controlEnabled)
+        {
             float motor = maxMotorTorque * Input.GetAxis("Vertical");
             float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
-            foreach (AxleInfo axleInfo in axleInfos) {
-                if (axleInfo.steering) {
+            foreach (AxleInfo axleInfo in axleInfos)
+            {
+                if (axleInfo.steering)
+                {
                     axleInfo.leftWheel.steerAngle = steering;
                     axleInfo.rightWheel.steerAngle = steering;
                 }
-                if (axleInfo.motor) {
+                if (axleInfo.motor)
+                {
                     axleInfo.leftWheel.motorTorque = motor;
                     axleInfo.rightWheel.motorTorque = motor;
                 }
@@ -64,6 +70,9 @@ public class BusControl : MonoBehaviour
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
         }
+
+        Vector3 lookDirection = new Vector3(this.transform.forward.x, 0.0f, this.transform.forward.z);
+        this.transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
     }
 
     private void OnTriggerEnter(Collider other) {
