@@ -13,7 +13,7 @@ public class AxleInfo
 
 public class BusControl : MonoBehaviour
 {
-    private bool controlEnabled;
+    public bool controlEnabled = true;
 
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
