@@ -1,52 +1,38 @@
 fileFormatVersion: 2
-guid: 0216d5d7746a5ca47a3ad04bd7965a94
-timeCreated: 1512282109
+guid: 0a9e872f7b2390641acd98f155a6ef85
+timeCreated: 1512325443
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube
-    100004: Text
     400000: //RootNode
-    400002: Cube
-    400004: Text
     2300000: //RootNode
-    2300002: Cube
-    2300004: Text
     3300000: //RootNode
-    3300002: Cube
-    3300004: Text
     4300000: Cube
-    4300002: Text
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof
-    second: {fileID: 2100000, guid: 1a6e6a9227bd6044bb4f90843fea09fd, type: 2}
+      name: AFrameFace
+    second: {fileID: 2100000, guid: f933065f3c762d147a2bd37b530736a1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: SchoolOuter
-    second: {fileID: 2100000, guid: dcd22463a41fc5f429e90bf25f15fc6c, type: 2}
+      name: AFrameOutside
+    second: {fileID: 2100000, guid: e1ff298d08e2fc24db1dae3ca13be325, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: SchoolStone
-    second: {fileID: 2100000, guid: f0d507d0606b762488d4f4e1e98a242a, type: 2}
+      name: BlackMetal
+    second: {fileID: 2100000, guid: e05e4c71080b2b045829ecc4f45abbe1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: WoodDoor
-    second: {fileID: 2100000, guid: 1f776b3c4b2481f4ab1a3e6ff89565a7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: unnamed
-    second: {fileID: 2100000, guid: 3dfe9e91b3485f14fad1cf5e6a17d0dd, type: 2}
+      name: WoodTrim
+    second: {fileID: 2100000, guid: b202aa4996d40fe48a59b6b231631e9a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
