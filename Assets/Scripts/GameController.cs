@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour {
             endLevel.gameObject.SetActive(false);
         }
     }
-
+    
     public static void AttachPassenger() {
         NumOfPassengers++;
     }

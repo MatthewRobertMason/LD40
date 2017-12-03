@@ -17,6 +17,8 @@ public class ButtonFunctions : MonoBehaviour {
 
     public void GoToNextLevel() {
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
+        GameController.TimeOver = false;
+        GameController.EndLevelHit = false;
     }
 
     public void StartGame()

@@ -26,7 +26,6 @@ public class AiControl : MonoBehaviour {
 	}
 
     void Jump(Vector3 playerPos) {
-        Debug.Log("Jumping");
         Vector3 targetPos = (playerPos - transform.position);
         targetPos += new Vector3(0, 0.2f, 0);
         rb.AddForce(targetPos * jumpForce);

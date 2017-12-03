@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4960383879238824}
   - component: {fileID: 114787653586460400}
   - component: {fileID: 54464141523751070}
+  - component: {fileID: 65734312288951442}
   m_Layer: 0
   m_Name: Bus
   m_TagString: Untagged
@@ -531,7 +532,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205869626489070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88, y: 17.61, z: -82.65}
+  m_LocalPosition: {x: -18.08933, y: 15.890696, z: -37.465992}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4749935559286144}
@@ -821,12 +822,24 @@ MeshCollider:
   m_GameObject: {fileID: 1636103334723638}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 1
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 3ad8ec6661654ac41855f7b943ab3a9f, type: 3}
+--- !u!65 &65734312288951442
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205869626489070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.88, z: 3.31}
+  m_Center: {x: 0, y: -0.11, z: 0.25}
 --- !u!81 &81603659358264916
 AudioListener:
   m_ObjectHideFlags: 1
@@ -955,6 +968,7 @@ MonoBehaviour:
   maxMotorTorque: 10000
   maxSteeringAngle: 35
   maxVelocity: 50
+  curMaxVelocity: 200
   centerOfMass: {x: 0, y: 0, z: 0}
 --- !u!124 &124107139652099920
 Behaviour:
