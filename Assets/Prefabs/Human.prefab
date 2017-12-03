@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31da76e9507f2ea4b961ec2c891768c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpDist: 15
-  jumpForce: 1000
+  jumpDist: 25
+  jumpForce: 10000
