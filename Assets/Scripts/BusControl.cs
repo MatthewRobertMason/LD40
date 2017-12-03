@@ -76,9 +76,15 @@ public class BusControl : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        print("game over");
-        controlEnabled = false;
-        gameObject.GetComponentInChildren<Camera>().transform.SetParent(null);
+        RemoveControlAndCamera();
         GameController.GameOver = true;
+    }
+
+    public void RemoveControlAndCamera() {
+        controlEnabled = false;
+        Camera cam = gameObject.GetComponentInChildren<Camera>();
+        if (cam != null) {
+            cam.transform.SetParent(null);
+        }
     }
 }

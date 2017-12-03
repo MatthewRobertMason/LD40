@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour {
 
-	public void GoToNextLevel() {
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    public void GoToNextLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -16,5 +26,6 @@ public class ButtonFunctions : MonoBehaviour {
     public void Restart() {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene);
+        GameController.GameOver = false;
     }
 }
