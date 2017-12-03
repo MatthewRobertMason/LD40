@@ -74,7 +74,7 @@ public class BusControl : MonoBehaviour
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
         }
-
+        
         Rigidbody rb = this.GetComponent<Rigidbody>();
 
         curMaxVelocity = (maxVelocity - (GameController.NumOfPassengers * 3));
