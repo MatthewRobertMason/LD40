@@ -23,9 +23,16 @@ public class AiControl : MonoBehaviour {
         if (!hasJumped && distToPlayer <= jumpDist) {
             Jump(playerPos);
         }
+
+        //this.transform.LookAt(GameController.Player.transform.position);
+        //Vector3 lookDirection = GameController.Player.transform.position - this.transform.position;
+        //lookDirection.y = 0.0f;
+        
+        //this.transform.rotation.SetLookRotation(lookDirection);
 	}
 
     void Jump(Vector3 playerPos) {
+        Debug.Log("Jumping");
         Vector3 targetPos = (playerPos - transform.position);
         targetPos += new Vector3(0, 0.2f, 0);
         rb.AddForce(targetPos * jumpForce);
@@ -33,10 +40,11 @@ public class AiControl : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (!hasBeenAdded && (collision.gameObject.GetComponent<BusControl>() != null || collision.gameObject.GetComponent<AiControl>() != null)) {
+        if (!hasBeenAdded 
+            && (collision.gameObject.GetComponent<BusControl>() != null 
+            ||  collision.gameObject.GetComponent<AiControl>() != null)) {
             //FixedJoint joint = gameObject.AddComponent<FixedJoint>();
             //joint.connectedBody = collision.gameObject.GetComponent<Rigidbody>();
-
             GameController.AttachPassenger();
             hasBeenAdded = true;
             Destroy(rb);
