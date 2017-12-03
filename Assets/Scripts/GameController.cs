@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
     public float time;
     public Text peopleAttached;
     public Text timeRemaining;
+    public Text finalScore;
+    public Canvas endLevel;
     public Canvas HUD;
     public Canvas gameOverCanvas;
 
@@ -67,13 +69,13 @@ public class GameController : MonoBehaviour {
             if(TimeOver) {
                 gameOverCanvas.gameObject.SetActive(true);
             } else if(EndLevelHit) {
-                // endLevelCanvas active true
-                // remove timer
+                endLevel.gameObject.SetActive(true);
+                finalScore.text = "Final Score: " + NumOfPassengers;
             }
         } else {
             HUD.gameObject.SetActive(true);
             gameOverCanvas.gameObject.SetActive(false);
-            // endLevelCanvas active false
+            endLevel.gameObject.SetActive(false);
         }
     }
 
