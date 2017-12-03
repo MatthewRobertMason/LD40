@@ -83,6 +83,14 @@ public class BusControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         RemoveControlAndCamera();
+
+        foreach (AiControl ai in this.GetComponentsInChildren<AiControl>())
+        {
+            Rigidbody rb = ai.gameObject.AddComponent<Rigidbody>();
+            ai.transform.parent = null;
+            rb.AddForce(((ai.transform.position - this.transform.position).normalized + Vector3.up) * 10.0f, ForceMode.Impulse);
+        }
+
         GameController.GameOver = true;
     }
 
