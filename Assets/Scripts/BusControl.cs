@@ -19,13 +19,13 @@ public class BusControl : MonoBehaviour
     public float maxMotorTorque;
     public float maxSteeringAngle;
 
+    public float maxVelocity = 200.0f;
+
     public Vector3 centerOfMass = new Vector3(0.0f, -1.0f, 0.0f);
-    private Quaternion initialRotation = new Quaternion();
 
     public void Start()
     {
         this.GetComponent<Rigidbody>().centerOfMass = centerOfMass;
-        initialRotation = this.transform.rotation;
     }
 
     // finds the corresponding visual wheel
@@ -69,6 +69,12 @@ public class BusControl : MonoBehaviour
                 ApplyLocalPositionToVisuals(axleInfo.leftWheel);
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
+        }
+
+        Rigidbody rb = this.GetComponent<Rigidbody>();
+        if (rb.velocity.magnitude > maxVelocity)
+        {
+            rb.velocity = rb.velocity.normalized * maxVelocity;
         }
 
         Vector3 lookDirection = new Vector3(this.transform.forward.x, 0.0f, this.transform.forward.z);

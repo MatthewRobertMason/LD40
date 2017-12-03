@@ -815,6 +815,7 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 10000
   maxSteeringAngle: 35
+  maxVelocity: 50
   centerOfMass: {x: 0, y: 0, z: 0}
 --- !u!124 &124107139652099920
 Behaviour:
