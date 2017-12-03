@@ -66,9 +66,12 @@ public class GameController : MonoBehaviour {
 
         if(TimeOver || EndLevelHit) {
             HUD.gameObject.SetActive(false);
-            if(TimeOver) {
+            if(TimeOver && !endLevelHit)
+            {
                 gameOverCanvas.gameObject.SetActive(true);
-            } else if(EndLevelHit) {
+            }
+            else if(EndLevelHit)
+            {
                 endLevel.gameObject.SetActive(true);
                 finalScore.text = "Final Score: " + NumOfPassengers;
             }
