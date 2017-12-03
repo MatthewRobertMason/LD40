@@ -23,12 +23,6 @@ public class AiControl : MonoBehaviour {
         if (!hasJumped && distToPlayer <= jumpDist) {
             Jump(playerPos);
         }
-
-        //this.transform.LookAt(GameController.Player.transform.position);
-        //Vector3 lookDirection = GameController.Player.transform.position - this.transform.position;
-        //lookDirection.y = 0.0f;
-        
-        //this.transform.rotation.SetLookRotation(lookDirection);
 	}
 
     void Jump(Vector3 playerPos) {
