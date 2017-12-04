@@ -45,10 +45,15 @@ public class AiControl : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
+        var other_ai = collision.gameObject.GetComponent<AiControl>();
         if (!hasBeenAdded 
             && (collision.gameObject.GetComponent<BusControl>() != null 
-            ||  collision.gameObject.GetComponent<AiControl>() != null)) {
-            
+            ||  other_ai != null)) 
+        {
+            if(other_ai != null && !other_ai.hasBeenAdded){
+                return;
+            }
+
             this.transform.position += Vector3.up;
 
             GameController.AttachPassenger();

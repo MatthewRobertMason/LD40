@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
     private static BusControl player;
     private static bool timeOver = false;
     private static bool endLevelHit = false;
+    private static Vector3 startPoint;
+    private static Quaternion startOrientation;
 
     public float time;
     public Text peopleAttached;
@@ -44,11 +46,27 @@ public class GameController : MonoBehaviour {
         set { endLevelHit = value; }
     }
 
+    public static Vector3 StartPoint {
+        get { return new Vector3(startPoint.x, startPoint.y, startPoint.z); }
+        set { startPoint = value; }
+    }
+
+    public static Quaternion StartOrientation {
+        get { return new Quaternion(startOrientation.x, startOrientation.y, startOrientation.z, startOrientation.w); }
+        set { startOrientation = value; }
+    }
+
     // Use this for initialization
     void Start () {
         Score = 0;
         NumOfPassengers = 0;
         Player = FindObjectOfType<BusControl>();
+
+        var pos = Player.transform.position;
+        StartPoint = new Vector3(pos.x, pos.y, pos.z);
+
+        var rot = Player.transform.rotation;
+        StartOrientation = new Quaternion(rot.x, rot.y, rot.z, rot.w);
 	}
 	
 	// Update is called once per frame

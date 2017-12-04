@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,5 +34,13 @@ public class ButtonFunctions : MonoBehaviour {
     public void Restart() {
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene);
+    }
+
+    public static void Replace() {
+        GameController.Player.transform.position = GameController.StartPoint;
+        GameController.Player.transform.rotation = GameController.StartOrientation;
+        Debug.Log(String.Format("Replace the player to {0}", GameController.StartPoint));
+        var rb = GameController.Player.GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, 0);
     }
 }
