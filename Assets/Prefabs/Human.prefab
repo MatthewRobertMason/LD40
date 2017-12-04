@@ -269,15 +269,17 @@ MonoBehaviour:
   jumpDist: 15
   jumpForce: 15000
   jumpSounds:
-  - sound: {fileID: 8300000, guid: 45a28b326c81a22479c4d3df65e2a94f, type: 3}
+  - sound: {fileID: 8300000, guid: 95e83f7d943e29b40a3f04f910dd219e, type: 3}
     weight: 10
-  - sound: {fileID: 8300000, guid: bc6b4a81c8672574ea49be8e77f6059c, type: 3}
+  - sound: {fileID: 8300000, guid: ca7053c14263be9448e794787a96066a, type: 3}
     weight: 10
-  - sound: {fileID: 8300000, guid: 259d13e04a3e72e47b33bb79e256bc59, type: 3}
+  - sound: {fileID: 8300000, guid: dc4f10e2956ae7843b39391569cd2863, type: 3}
     weight: 10
-  - sound: {fileID: 8300000, guid: d5ce5dfb938908a438785e4bae9d0954, type: 3}
-    weight: 1
+  - sound: {fileID: 8300000, guid: bfe2a113dd1d6e04ca75ee164d3cf9e5, type: 3}
+    weight: 10
+  - sound: {fileID: 8300000, guid: 8a6e9f03c3562d54f92912ae5c603697, type: 3}
+    weight: 10
+  - sound: {fileID: 8300000, guid: 4a285cc87b4534941ae58daa0403d149, type: 3}
+    weight: 10
   - sound: {fileID: 8300000, guid: caa1c4ac409954a49bf1073497ca627c, type: 3}
-    weight: 1
-  - sound: {fileID: 8300000, guid: cedec2a49a1849043be5770b13a9053b, type: 3}
     weight: 1
