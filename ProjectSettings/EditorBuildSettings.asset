@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Levels/MainMenu.unity
     guid: 889f55071b023bf448bb7733df309833
   - enabled: 1
-    path: Assets/Levels/donut-donut-donut.unity
-    guid: 49ac022d30cc8a347b1e7f5836ed537f
-  - enabled: 1
     path: Assets/Levels/long.unity
     guid: b089eab9b72aa124fa1d286def70ad07
+  - enabled: 1
+    path: Assets/Levels/donut-donut-donut.unity
+    guid: 49ac022d30cc8a347b1e7f5836ed537f
   - enabled: 1
     path: Assets/Levels/loops.unity
     guid: 0f702cf2266910442bc5cc7109670b76

@@ -11,8 +11,8 @@ public class AutomatedBuild : MonoBehaviour
         return new string[]
         {
             "Assets/Levels/MainMenu.unity",
-            "Assets/Levels/donut-donut-donut.unity",
             "Assets/Levels/long.unity",
+            "Assets/Levels/donut-donut-donut.unity",
             "Assets/Levels/loops.unity",
             "Assets/Levels/donutDrop.unity",
             "Assets/Levels/small.unity"
@@ -39,6 +39,42 @@ public class AutomatedBuild : MonoBehaviour
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
         options.locationPathName = "Build/Jam/WebGL";
+
+        BuildPipeline.BuildPlayer(options);
+    }
+
+    public static void BuildWindows()
+    {
+        BuildPlayerOptions options = new BuildPlayerOptions();
+        options.scenes = GetLevels();
+
+        options.targetGroup = BuildTargetGroup.Standalone;
+        options.target = BuildTarget.StandaloneWindows;
+        options.locationPathName = "Build/Jam/Windows";
+
+        BuildPipeline.BuildPlayer(options);
+    }
+
+    public static void BuildMac()
+    {
+        BuildPlayerOptions options = new BuildPlayerOptions();
+        options.scenes = GetLevels();
+
+        options.targetGroup = BuildTargetGroup.Standalone;
+        options.target = BuildTarget.StandaloneOSXUniversal;
+        options.locationPathName = "Build/Jam/Mac";
+
+        BuildPipeline.BuildPlayer(options);
+    }
+
+    public static void BuildLinux()
+    {
+        BuildPlayerOptions options = new BuildPlayerOptions();
+        options.scenes = GetLevels();
+
+        options.targetGroup = BuildTargetGroup.Standalone;
+        options.target = BuildTarget.StandaloneLinuxUniversal;
+        options.locationPathName = "Build/Jam/Linux";
 
         BuildPipeline.BuildPlayer(options);
     }
