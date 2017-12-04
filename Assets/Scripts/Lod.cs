@@ -16,12 +16,12 @@ public class Lod : MonoBehaviour
         new LodInfo() { lodObject = null, LODDistance = float.PositiveInfinity }
     };
 
-    private GameObject camera = null;
+    private Camera camera = null;
     
 	// Use this for initialization
 	void Start ()
     {
-        camera = GameController.FindObjectOfType<BusControl>().GetComponentsInChildren<Camera>()[0].gameObject;
+        camera = GameController.FindObjectOfType<BusControl>().GetComponentsInChildren<Camera>()[0];
 
         LodInfo lastLod = LodObjects[0];
 		foreach (LodInfo li in LodObjects)

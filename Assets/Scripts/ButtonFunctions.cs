@@ -39,7 +39,14 @@ public class ButtonFunctions : MonoBehaviour {
     public static void Replace() {
         GameController.Player.transform.position = GameController.StartPoint;
         GameController.Player.transform.rotation = GameController.StartOrientation;
-        Debug.Log(String.Format("Replace the player to {0}", GameController.StartPoint));
+        var rb = GameController.Player.GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, 0);
+    }
+
+    public void FixStuck()
+    {
+        GameController.Player.transform.position = GameController.StartPoint;
+        GameController.Player.transform.rotation = GameController.StartOrientation;
         var rb = GameController.Player.GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, 0);
     }
