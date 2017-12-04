@@ -282,4 +282,4 @@ MonoBehaviour:
   - sound: {fileID: 8300000, guid: 4a285cc87b4534941ae58daa0403d149, type: 3}
     weight: 10
   - sound: {fileID: 8300000, guid: caa1c4ac409954a49bf1073497ca627c, type: 3}
-    weight: 1
+    weight: 5

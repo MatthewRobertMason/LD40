@@ -50,7 +50,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.Standalone;
         options.target = BuildTarget.StandaloneWindows;
-        options.locationPathName = "Build/Jam/Windows/Windows";
+        options.locationPathName = "Build/Jam/Windows/Windows.exe";
 
         BuildPipeline.BuildPlayer(options);
     }
@@ -74,7 +74,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.Standalone;
         options.target = BuildTarget.StandaloneLinuxUniversal;
-        options.locationPathName = "Build/Jam/Linux/Linux";
+        options.locationPathName = "Build/Jam/Linux/Linux.x86";
 
         BuildPipeline.BuildPlayer(options);
     }
