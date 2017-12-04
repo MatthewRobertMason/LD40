@@ -103,6 +103,10 @@ public class BusControl : MonoBehaviour
 
         Vector3 lookDirection = new Vector3(this.transform.forward.x, 0.0f, this.transform.forward.z);
         this.transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+
+        if(this.transform.position.y < 0){
+            ButtonFunctions.Replace();
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
