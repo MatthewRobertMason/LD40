@@ -76,14 +76,11 @@ public class AiControl : MonoBehaviour {
 
             if (trackToPlay <= 0)
             {
-                Debug.Log("TrackId: " + trackId);
                 audioSource.PlayOneShot(js.sound);
                 return;
             }
 
             trackId++;
         }
-
-        Debug.Log("Track didn't playTrackId: " + trackId);
     }
 }
