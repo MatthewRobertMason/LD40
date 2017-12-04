@@ -18,6 +18,7 @@ public class BusControl : MonoBehaviour
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    private float currentSteeringAngle = 0.0f;
 
     public float maxVelocity = 200.0f;
     public float curMaxVelocity = 200.0f;
@@ -39,6 +40,8 @@ public class BusControl : MonoBehaviour
         foreach(WheelCollider collide in GetComponentsInChildren<WheelCollider>()) {
             collide.ConfigureVehicleSubsteps(5f, 15, 20);
         }
+
+        currentSteeringAngle = maxSteeringAngle;
     }
 
     // finds the corresponding visual wheel
@@ -82,56 +85,14 @@ public class BusControl : MonoBehaviour
                 ApplyLocalPositionToVisuals(axleInfo.leftWheel);
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
-            
-            if (motor > 0.0f)
-            {
-                deaccelerated = false;
-                engineDeaccelerateSource.Stop();
-                engineIdleSource.Stop();
 
-                float deaccelerationPercentPlayed = engineAccelerateSource.time / engineAccelerateSource.clip.length;
-                if (deaccelerationPercentPlayed == 0.0f)
-                    deaccelerationPercentPlayed = 1.0f;
-                engineDeaccelerateSource.time = engineDeaccelerateSource.clip.length * (1 - deaccelerationPercentPlayed);
-                
-                if (!engineFullSource.isPlaying && !engineAccelerateSource.isPlaying && !accelerated)
-                {
-                    engineAccelerateSource.Play();
-                    accelerated = true;
-                }
-
-                if (accelerated && !engineAccelerateSource.isPlaying && !engineFullSource.isPlaying)
-                {
-                    engineFullSource.Play();
-                }
-            }
-            else
-            {
-                accelerated = false;
-                engineAccelerateSource.Stop();
-                engineFullSource.Stop();
-
-                float accelerationPercentPlayed = engineDeaccelerateSource.time / engineDeaccelerateSource.clip.length;
-                if (accelerationPercentPlayed == 0.0f)
-                    accelerationPercentPlayed = 1.0f;
-                engineAccelerateSource.time = engineAccelerateSource.clip.length * (1 - accelerationPercentPlayed);
-                
-                if (!engineIdleSource.isPlaying && !engineDeaccelerateSource.isPlaying && !deaccelerated)
-                {
-                    engineDeaccelerateSource.Play();
-                    deaccelerated = true;
-                }
-
-                if (deaccelerated && !engineDeaccelerateSource.isPlaying && !engineIdleSource.isPlaying)
-                {
-                    engineIdleSource.Play();
-                }
-            }
+            EngineSounds(motor);
         }
         
         Rigidbody rb = this.GetComponent<Rigidbody>();
 
         curMaxVelocity = (maxVelocity - (GameController.NumOfPassengers * 3));
+        currentSteeringAngle = (maxSteeringAngle - Mathf.Min(GameController.NumOfPassengers, 15.0f));
 
         if (rb.velocity.magnitude > curMaxVelocity)
         {
@@ -162,6 +123,54 @@ public class BusControl : MonoBehaviour
         Camera cam = gameObject.GetComponentInChildren<Camera>();
         if (cam != null) {
             cam.transform.SetParent(null);
+        }
+    }
+
+    private void EngineSounds(float motor)
+    {
+        if (motor > 0.0f)
+        {
+            deaccelerated = false;
+            engineDeaccelerateSource.Stop();
+            engineIdleSource.Stop();
+
+            float deaccelerationPercentPlayed = engineAccelerateSource.time / engineAccelerateSource.clip.length;
+            if (deaccelerationPercentPlayed == 0.0f)
+                deaccelerationPercentPlayed = 1.0f;
+            engineDeaccelerateSource.time = engineDeaccelerateSource.clip.length * (1 - deaccelerationPercentPlayed);
+
+            if (!engineFullSource.isPlaying && !engineAccelerateSource.isPlaying && !accelerated)
+            {
+                engineAccelerateSource.Play();
+                accelerated = true;
+            }
+
+            if (accelerated && !engineAccelerateSource.isPlaying && !engineFullSource.isPlaying)
+            {
+                engineFullSource.Play();
+            }
+        }
+        else
+        {
+            accelerated = false;
+            engineAccelerateSource.Stop();
+            engineFullSource.Stop();
+
+            float accelerationPercentPlayed = engineDeaccelerateSource.time / engineDeaccelerateSource.clip.length;
+            if (accelerationPercentPlayed == 0.0f)
+                accelerationPercentPlayed = 1.0f;
+            engineAccelerateSource.time = engineAccelerateSource.clip.length * (1 - accelerationPercentPlayed);
+
+            if (!engineIdleSource.isPlaying && !engineDeaccelerateSource.isPlaying && !deaccelerated)
+            {
+                engineDeaccelerateSource.Play();
+                deaccelerated = true;
+            }
+
+            if (deaccelerated && !engineDeaccelerateSource.isPlaying && !engineIdleSource.isPlaying)
+            {
+                engineIdleSource.Play();
+            }
         }
     }
 }
