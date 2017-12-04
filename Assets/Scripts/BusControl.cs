@@ -93,9 +93,7 @@ public class BusControl : MonoBehaviour
                 if (deaccelerationPercentPlayed == 0.0f)
                     deaccelerationPercentPlayed = 1.0f;
                 engineDeaccelerateSource.time = engineDeaccelerateSource.clip.length * (1 - deaccelerationPercentPlayed);
-
-                Debug.Log("% deaccel playTime: " + deaccelerationPercentPlayed);
-
+                
                 if (!engineFullSource.isPlaying && !engineAccelerateSource.isPlaying && !accelerated)
                 {
                     engineAccelerateSource.Play();
