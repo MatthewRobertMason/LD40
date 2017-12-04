@@ -26,7 +26,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
-        options.locationPathName = "Build/Testing/WebGL";
+        options.locationPathName = "Build/Testing/WebGL/WebGL";
 
         BuildPipeline.BuildPlayer(options);
     }
@@ -38,7 +38,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
-        options.locationPathName = "Build/Jam/WebGL";
+        options.locationPathName = "Build/Jam/WebGL/WebGL";
 
         BuildPipeline.BuildPlayer(options);
     }
@@ -50,7 +50,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.Standalone;
         options.target = BuildTarget.StandaloneWindows;
-        options.locationPathName = "Build/Jam/Windows";
+        options.locationPathName = "Build/Jam/Windows/Windows";
 
         BuildPipeline.BuildPlayer(options);
     }
@@ -62,7 +62,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.Standalone;
         options.target = BuildTarget.StandaloneOSXUniversal;
-        options.locationPathName = "Build/Jam/Mac";
+        options.locationPathName = "Build/Jam/Mac/Mac";
 
         BuildPipeline.BuildPlayer(options);
     }
@@ -74,7 +74,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.Standalone;
         options.target = BuildTarget.StandaloneLinuxUniversal;
-        options.locationPathName = "Build/Jam/Linux";
+        options.locationPathName = "Build/Jam/Linux/Linux";
 
         BuildPipeline.BuildPlayer(options);
     }
