@@ -23,6 +23,15 @@ public class BusControl : MonoBehaviour
     public float curMaxVelocity = 200.0f;
 
     public Vector3 centerOfMass = new Vector3(0.0f, -1.0f, 0.0f);
+    
+    public AudioSource engineIdleSource = null;
+    public AudioSource engineFullSource = null;
+    public AudioSource engineAccelerateSource = null;
+    public AudioSource engineDeaccelerateSource = null;
+    public AudioSource crashSource = null;
+
+    private bool accelerated = false;
+    private bool deaccelerated = true;
 
     public void Start()
     {
@@ -72,6 +81,53 @@ public class BusControl : MonoBehaviour
                 }
                 ApplyLocalPositionToVisuals(axleInfo.leftWheel);
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+            }
+            
+            if (motor > 0.0f)
+            {
+                deaccelerated = false;
+                engineDeaccelerateSource.Stop();
+                engineIdleSource.Stop();
+
+                float deaccelerationPercentPlayed = engineAccelerateSource.time / engineAccelerateSource.clip.length;
+                if (deaccelerationPercentPlayed == 0.0f)
+                    deaccelerationPercentPlayed = 1.0f;
+                engineDeaccelerateSource.time = engineDeaccelerateSource.clip.length * (1 - deaccelerationPercentPlayed);
+
+                Debug.Log("% deaccel playTime: " + deaccelerationPercentPlayed);
+
+                if (!engineFullSource.isPlaying && !engineAccelerateSource.isPlaying && !accelerated)
+                {
+                    engineAccelerateSource.Play();
+                    accelerated = true;
+                }
+
+                if (accelerated && !engineAccelerateSource.isPlaying && !engineFullSource.isPlaying)
+                {
+                    engineFullSource.Play();
+                }
+            }
+            else
+            {
+                accelerated = false;
+                engineAccelerateSource.Stop();
+                engineFullSource.Stop();
+
+                float accelerationPercentPlayed = engineDeaccelerateSource.time / engineDeaccelerateSource.clip.length;
+                if (accelerationPercentPlayed == 0.0f)
+                    accelerationPercentPlayed = 1.0f;
+                engineAccelerateSource.time = engineAccelerateSource.clip.length * (1 - accelerationPercentPlayed);
+                
+                if (!engineIdleSource.isPlaying && !engineDeaccelerateSource.isPlaying && !deaccelerated)
+                {
+                    engineDeaccelerateSource.Play();
+                    deaccelerated = true;
+                }
+
+                if (deaccelerated && !engineDeaccelerateSource.isPlaying && !engineIdleSource.isPlaying)
+                {
+                    engineIdleSource.Play();
+                }
             }
         }
         

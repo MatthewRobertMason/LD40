@@ -3210,10 +3210,6 @@ Prefab:
       propertyPath: m_Name
       value: donut_sign (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4968688408845522, guid: 007feed21815e60438d7f44fb3cf77e8, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -302.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 007feed21815e60438d7f44fb3cf77e8, type: 2}
   m_IsPrefabParent: 0
@@ -4830,7 +4826,7 @@ Prefab:
     - target: {fileID: 224546171980112236, guid: 56357d0588395e245bc8813ed057c264,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 517
+      value: 517.5
       objectReference: {fileID: 0}
     - target: {fileID: 224546171980112236, guid: 56357d0588395e245bc8813ed057c264,
         type: 2}
