@@ -40,7 +40,7 @@ public class BusControl : MonoBehaviour
         foreach(WheelCollider collide in GetComponentsInChildren<WheelCollider>()) {
             collide.ConfigureVehicleSubsteps(5f, 15, 20);
         }
-
+        
         currentSteeringAngle = maxSteeringAngle;
     }
 
