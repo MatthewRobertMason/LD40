@@ -5,18 +5,20 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    private static int score;
+    private static int score = 0;
+
     private static int numOfPassengers;
     private static BusControl player;
     private static bool timeOver = false;
     private static bool endLevelHit = false;
     private static Vector3 startPoint;
     private static Quaternion startOrientation;
-
+    private bool addedScore = false;
     public float time;
     public Text peopleAttached;
     public Text timeRemaining;
     public Text finalScore;
+    
     public Canvas endLevel;
     public Canvas HUD;
     public Canvas gameOverCanvas;
@@ -25,7 +27,7 @@ public class GameController : MonoBehaviour {
         get { return score; }
         set { score = value; }
     }
-
+    
     public static int NumOfPassengers {
         get { return numOfPassengers; }
         set { numOfPassengers = value; }
@@ -58,7 +60,7 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Score = 0;
+        //Score = 0;
         NumOfPassengers = 0;
         Player = FindObjectOfType<BusControl>();
 
@@ -84,14 +86,19 @@ public class GameController : MonoBehaviour {
 
         if(TimeOver || EndLevelHit) {
             HUD.gameObject.SetActive(false);
-            if(TimeOver && !endLevelHit)
+            if (TimeOver && !endLevelHit)
             {
                 gameOverCanvas.gameObject.SetActive(true);
             }
-            else if(EndLevelHit)
+            else if (EndLevelHit)
             {
                 endLevel.gameObject.SetActive(true);
-                finalScore.text = "Final Score: " + NumOfPassengers;
+                if (!addedScore)
+                { 
+                    Score += NumOfPassengers;
+                    addedScore = true;
+                }
+                finalScore.text = "Total Score: " + Score;
             }
         } else {
             HUD.gameObject.SetActive(true);
